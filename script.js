@@ -92,7 +92,41 @@ function setupApp() {
     });
   };
 
-  cardElement.addEventListener('click', handleInteraction);
+  const triggerInteraction = (source) => {
+    console.debug('[TalkFolkDance] card interaction', source);
+    handleInteraction();
+  };
+
+  const handleClick = (event) => {
+    if (typeof event.button === 'number' && event.button !== 0) {
+      return;
+    }
+    triggerInteraction(event.type);
+  };
+
+  const handleTouchStart = (event) => {
+    event.preventDefault();
+    triggerInteraction(event.type);
+  };
+
+  const handlePointerDown = (event) => {
+    if (event.pointerType === 'mouse') {
+      return;
+    }
+    event.preventDefault();
+    triggerInteraction(`${event.type}:${event.pointerType}`);
+  };
+
+  if (window.PointerEvent) {
+    cardElement.addEventListener('pointerdown', handlePointerDown);
+    cardElement.addEventListener('click', handleClick);
+  } else {
+    ['click', 'touchstart'].forEach((eventName) => {
+      const handler = eventName === 'click' ? handleClick : handleTouchStart;
+      cardElement.addEventListener(eventName, handler);
+    });
+  }
+
   cardElement.addEventListener('keydown', (event) => {
     if (event.key !== 'Enter' && event.key !== ' ') {
       return;

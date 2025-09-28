@@ -133,13 +133,47 @@ function setupApp(): void {
     });
   };
 
-  cardElement.addEventListener('click', handleInteraction);
+  const triggerInteraction = (source: string): void => {
+    console.debug('[TalkFolkDance] card interaction', source);
+    void handleInteraction();
+  };
+
+  const handleClick = (event: MouseEvent): void => {
+    if (event.button !== 0) {
+      return;
+    }
+    triggerInteraction(event.type);
+  };
+
+  const handleTouchStart = (event: TouchEvent): void => {
+    event.preventDefault();
+    triggerInteraction(event.type);
+  };
+
+  const handlePointerDown = (event: PointerEvent): void => {
+    if (event.pointerType === 'mouse') {
+      return;
+    }
+    event.preventDefault();
+    triggerInteraction(`${event.type}:${event.pointerType}`);
+  };
+
+  if (window.PointerEvent) {
+    cardElement.addEventListener('pointerdown', handlePointerDown);
+    cardElement.addEventListener('click', handleClick);
+  } else {
+    ['click', 'touchstart'].forEach((eventName) => {
+      const handler = eventName === 'click' ? handleClick : handleTouchStart;
+      cardElement.addEventListener(eventName, handler as EventListener);
+    });
+  }
+
   cardElement.addEventListener('keydown', (event: KeyboardEvent) => {
     if (event.key !== 'Enter' && event.key !== ' ') {
       return;
     }
     event.preventDefault();
-    handleInteraction();
+    void handleInteraction();
   });
 
   const updateVhUnit = (): void => {
