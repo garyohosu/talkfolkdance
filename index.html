@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Talk Folk Dance</title>
+    <meta name="description" content="カードをめくって、みんなで語り合うトークテーマを見つけよう" />
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#000000" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Talk Folk Dance" />
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.webmanifest" />
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    
+    <!-- Stylesheets -->
+    
+    
+    
+    <script type="module" crossorigin src="/talkfolkdance/assets/index-dbdd2866.js"></script>
+    <link rel="stylesheet" href="/talkfolkdance/assets/index-efa37f79.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <h1 class="app-header__title">トークフォークダンス</h1>
+      <p class="app-header__subtitle">カードをめくって、みんなで語り合うトークテーマを引いてみましょう。</p>
+    </header>
+
+    <main class="app-layout">
+      <section class="card-stage">
+        <div class="card" data-role="card" aria-live="polite" aria-label="トークテーマカード" tabindex="0">
+          <div class="card__inner">
+            <div class="card__face card__face--back">
+              <div class="card__sigil" aria-hidden="true"></div>
+              <p class="card__prompt">タップしてカードをめくる</p>
+            </div>
+            <div class="card__face card__face--front">
+              <p class="card__label">トークテーマ</p>
+              <p class="card__theme" data-role="theme">カードをタップしてトークテーマを表示しましょう。</p>
+            </div>
+          </div>
+        </div>
+        <p class="card-stage__hint">カードをタップして新しい話題を見つけましょう。</p>
+      </section>
+    </main>
+
+    
+    
+  </body>
+</html>
