@@ -74,6 +74,8 @@ class AppController {
       return;
     }
 
+    console.debug('[talkfolkdance] card interaction detected');
+
     if (!this.deckManager.hasRemaining()) {
       await this.handleDeckExhausted();
       return;

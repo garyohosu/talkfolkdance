@@ -25,7 +25,7 @@ class CardView {
     this.animating = true;
 
     if (this.cardElement.classList.contains('card--flipped')) {
-      await this.#toggleFlip(false);
+      await this._toggleFlip(false);
     }
 
     if (this.themeElement) {
@@ -35,7 +35,7 @@ class CardView {
       this.revelationElement.textContent = revelationText;
     }
 
-    await this.#toggleFlip(true);
+    await this._toggleFlip(true);
     this.animating = false;
     return true;
   }
@@ -44,7 +44,7 @@ class CardView {
     if (!withAnimation) {
       this.cardElement.classList.remove('card--flipped');
     } else {
-      await this.#toggleFlip(false);
+      await this._toggleFlip(false);
     }
     if (this.themeElement) {
       this.themeElement.textContent = this.defaultThemeText;
@@ -55,7 +55,8 @@ class CardView {
     this.animating = false;
   }
 
-  async #toggleFlip(flipForward) {
+  // Internal helper for the flip animation; underscore keeps it pseudo-private without using class fields.
+  async _toggleFlip(flipForward) {
     return new Promise((resolve) => {
       const handler = (event) => {
         if (event.target !== this.innerElement) {
