@@ -1001,4 +1001,4 @@ const topics = [
   "これからの未来を想像しながら未来に向けて楽しみにしていることがどんなものか語り合ってみませんか？"
 ];
 
-export { topics };
+export default topics;

@@ -6,6 +6,9 @@
 - [x] 静的 SPA 実装（`index.html`, `scripts/`, `styles/`, `data/`）と手動確認チェックリスト (`docs/manual-checklist.md`) を作成。
 - [x] `npm test` でデータ／サービスのユニットテストを実行し成功。
 - [x] 作業完了後に spec をアーカイブし、次の開発に備えて `.sdd/target-spec.txt` をクリア。
+- [x] 1000件のトークテーマを `topics.js` に生成し、`script.js` からランダム表示するように実装。
+- [x] Web UI のタイトル／サブタイトルをトークフォークダンス向けの文言に刷新し、占い表現を排除。
+- [x] モジュールスクリプト経由でカード操作時にテーマが切り替わることを確認。
 
 次のアクション候補:
 - [ ] ブラウザで `index.html` を開き、`docs/manual-checklist.md` に沿って手動検証を実施。

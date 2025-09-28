@@ -1,7 +1,8 @@
 import assert from 'node:assert';
 
 export async function runDataTests() {
-  const { topics } = await import('../data/topics.js');
+  const module = await import('../topics.js');
+  const topics = module.default;
 
   assert.ok(Array.isArray(topics), 'topics should be an array');
   assert.strictEqual(topics.length, 1000, 'topics should contain 1000 entries');
