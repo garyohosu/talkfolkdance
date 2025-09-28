@@ -1,0 +1,35 @@
+@media (min-width: 640px) {
+  .app-layout {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 3rem;
+  }
+
+  .control-panel {
+    align-self: center;
+  }
+}
+
+@media (min-width: 960px) {
+  .app-header__subtitle {
+    font-size: 1.1rem;
+  }
+
+  .card {
+    width: clamp(320px, 24vw, 420px);
+  }
+}
+
+@media (max-height: 640px) and (min-width: 768px) {
+  .app-layout {
+    align-items: center;
+    gap: 2rem;
+  }
+}
+
+@media (pointer: coarse) {
+  .card {
+    width: clamp(240px, 68vw, 360px);
+  }
+}

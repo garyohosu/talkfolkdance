@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>神秘のトークフォークダンスカード</title>
+    <link rel="stylesheet" href="./styles/base.css" />
+    <link rel="stylesheet" href="./styles/card.css" />
+    <link rel="stylesheet" href="./styles/responsive.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1 class="app-header__title">神秘のトークフォークダンスカード</h1>
+      <p class="app-header__subtitle">
+        カードをめくって、タロットの啓示と共にトークテーマを引き寄せましょう。
+      </p>
+    </header>
+
+    <main class="app-layout">
+      <section class="card-panel">
+        <div class="card" data-role="card" aria-live="polite" aria-label="トークテーマカード">
+          <div class="card__inner">
+            <div class="card__face card__face--back">
+              <div class="card__sigil" aria-hidden="true"></div>
+              <p class="card__prompt">タップしてカードをめくる</p>
+            </div>
+            <div class="card__face card__face--front">
+              <p class="card__label">本日のテーマ</p>
+              <p class="card__theme" data-role="theme">カードをタップしてテーマを呼び出しましょう。</p>
+              <hr class="card__divider" />
+              <p class="card__label">神秘の啓示</p>
+              <p class="card__revelation" data-role="revelation">啓示はまだ静かに眠っています…</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="control-panel">
+        <p class="status" id="statusMessage">カードをタップしてテーマを呼び出してください。</p>
+        <p class="status status--muted" id="countMessage"></p>
+        <button type="button" id="resetButton" class="button button--ghost">全テーマをリセット</button>
+      </section>
+    </main>
+
+    <div class="reset-dialog" id="resetDialog" hidden aria-hidden="true">
+      <div class="reset-dialog__backdrop"></div>
+      <div class="reset-dialog__content" role="dialog" aria-modal="true" aria-labelledby="resetDialogTitle">
+        <h2 class="reset-dialog__title" id="resetDialogTitle">テーマをリセットしますか？</h2>
+        <p class="reset-dialog__message" id="resetDialogMessage">全てのテーマが新しくシャッフルされます。</p>
+        <div class="reset-dialog__actions">
+          <button type="button" data-action="cancel" class="button button--ghost">キャンセル</button>
+          <button type="button" data-action="confirm" class="button button--primary">リセット</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="app-footer">
+      <p class="app-footer__note">ブラウザだけで動作する静的アプリ。ローカルストレージに使用履歴を保存します。</p>
+    </footer>
+
+    <script type="module" src="./scripts/app.js"></script>
+  </body>
+</html>
