@@ -1002,3 +1002,4 @@ const topics = [
 ];
 
 export default topics;
+export { topics };

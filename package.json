@@ -1,21 +1,28 @@
 {
   "name": "talkfolkdance",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Talk Folk Dance - トークテーマアプリ",
+  "main": "index.html",
   "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
     "test": "node tests/run-tests.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/garyohosu/talkfolkdance.git"
   },
-  "keywords": [],
+  "keywords": ["pwa", "talk", "theme", "card", "mobile"],
   "author": "",
   "license": "ISC",
   "type": "module",
   "bugs": {
     "url": "https://github.com/garyohosu/talkfolkdance/issues"
   },
-  "homepage": "https://github.com/garyohosu/talkfolkdance#readme"
+  "homepage": "https://github.com/garyohosu/talkfolkdance#readme",
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "vite": "^4.4.5"
+  }
 }
