@@ -1,49 +1,58 @@
-const CACHE_NAME = 'talk-folk-dance-v1';
+const CACHE_NAME = 'talk-folk-dance-v2';
+const BASE_PATH = '/talkfolkdance/';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/main.ts',
-  '/topics.js',
-  '/styles/base.css',
-  '/styles/card.css',
-  '/styles/responsive.css',
-  '/manifest.webmanifest'
+  BASE_PATH,
+  `${BASE_PATH}index.html`,
+  `${BASE_PATH}manifest.webmanifest`,
+  `${BASE_PATH}topics.js`
 ];
 
-// インストール時にキャッシュを設定
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => {
-        console.log('Service Worker: キャッシュを開きました');
-        return cache.addAll(urlsToCache);
-      })
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll(urlsToCache);
+    })
   );
 });
 
-// フェッチ時にキャッシュから返す
 self.addEventListener('fetch', (event) => {
+  if (event.request.method !== 'GET') {
+    return;
+  }
+
+  const requestUrl = new URL(event.request.url);
+  const isSameOrigin = requestUrl.origin === self.location.origin;
+
   event.respondWith(
-    caches.match(event.request)
-      .then((response) => {
-        // キャッシュがあればそれを返す、なければネットワークから取得
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
+    caches.match(event.request).then((cachedResponse) => {
+      if (cachedResponse) {
+        return cachedResponse;
       }
-    )
+
+      return fetch(event.request)
+        .then((networkResponse) => {
+          if (!networkResponse || networkResponse.status !== 200 || !isSameOrigin) {
+            return networkResponse;
+          }
+
+          const clonedResponse = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, clonedResponse);
+          });
+
+          return networkResponse;
+        })
+        .catch(() => caches.match(`${BASE_PATH}index.html`));
+    })
   );
 });
 
-// 古いキャッシュを削除
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
           if (cacheName !== CACHE_NAME) {
-            console.log('Service Worker: 古いキャッシュを削除しています:', cacheName);
             return caches.delete(cacheName);
           }
         })

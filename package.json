@@ -7,21 +7,30 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "node tests/run-tests.js"
+    "test": "node tests/run-tests.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/garyohosu/talkfolkdance.git"
   },
-  "keywords": ["pwa", "talk", "theme", "card", "mobile"],
+  "keywords": [
+    "pwa",
+    "talk",
+    "theme",
+    "card",
+    "mobile"
+  ],
   "author": "",
   "license": "ISC",
   "type": "module",
   "bugs": {
     "url": "https://github.com/garyohosu/talkfolkdance/issues"
   },
-  "homepage": "https://github.com/garyohosu/talkfolkdance#readme",
+  "homepage": "https://garyohosu.github.io/talkfolkdance/",
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "typescript": "^5.2.2",
     "vite": "^4.4.5"
   }
