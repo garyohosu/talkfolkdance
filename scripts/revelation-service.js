@@ -1,4 +1,4 @@
-const DEFAULT_FALLBACK = '静けさが次の啓示を温めている…';
+const DEFAULT_FALLBACK = '静かな時間が次の話題を温めています。';
 
 class RevelationService {
   constructor({ messages = [] } = {}) {
