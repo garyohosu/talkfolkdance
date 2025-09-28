@@ -1,35 +1,37 @@
 @media (min-width: 640px) {
   .app-layout {
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 3rem;
+    padding: 3rem 2.5rem;
   }
 
-  .control-panel {
-    align-self: center;
+  .card-stage__hint {
+    font-size: 1rem;
+    letter-spacing: 0.12em;
   }
 }
 
 @media (min-width: 960px) {
   .app-header__subtitle {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
   }
 
   .card {
-    width: clamp(320px, 24vw, 420px);
+    width: clamp(340px, 22vw, 430px);
   }
 }
 
 @media (max-height: 640px) and (min-width: 768px) {
   .app-layout {
-    align-items: center;
-    gap: 2rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
   }
 }
 
 @media (pointer: coarse) {
   .card {
-    width: clamp(240px, 68vw, 360px);
+    width: clamp(240px, 75vw, 360px);
+  }
+
+  .card__inner {
+    box-shadow: 0 20px 45px rgba(12, 3, 33, 0.45), inset 0 0 0 1px rgba(209, 192, 255, 0.14);
   }
 }

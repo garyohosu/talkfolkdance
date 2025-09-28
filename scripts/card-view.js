@@ -2,9 +2,7 @@ class CardView {
   constructor({
     cardElement,
     themeElement,
-    revelationElement,
-    defaultThemeText = '',
-    defaultRevelationText = ''
+    defaultThemeText = ''
   } = {}) {
     if (!cardElement) {
       throw new Error('cardElement is required');
@@ -12,13 +10,11 @@ class CardView {
     this.cardElement = cardElement;
     this.innerElement = cardElement.querySelector('.card__inner') || cardElement;
     this.themeElement = themeElement;
-    this.revelationElement = revelationElement;
     this.defaultThemeText = defaultThemeText;
-    this.defaultRevelationText = defaultRevelationText;
     this.animating = false;
   }
 
-  async reveal({ themeText, revelationText }) {
+  async reveal({ themeText }) {
     if (this.animating) {
       return false;
     }
@@ -30,9 +26,6 @@ class CardView {
 
     if (this.themeElement) {
       this.themeElement.textContent = themeText;
-    }
-    if (this.revelationElement) {
-      this.revelationElement.textContent = revelationText;
     }
 
     await this._toggleFlip(true);
@@ -48,9 +41,6 @@ class CardView {
     }
     if (this.themeElement) {
       this.themeElement.textContent = this.defaultThemeText;
-    }
-    if (this.revelationElement) {
-      this.revelationElement.textContent = this.defaultRevelationText;
     }
     this.animating = false;
   }

@@ -24,13 +24,15 @@ body {
   color: var(--color-text);
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: center;
 }
 
 .app-header,
 .app-footer {
   text-align: center;
   padding: 1.5rem 1rem;
+  width: min(720px, 100%);
+  margin: 0 auto;
 }
 
 .app-header__title {
@@ -46,134 +48,40 @@ body {
   line-height: 1.6;
 }
 
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(185, 144, 255, 0.15), transparent 55%),
+    radial-gradient(circle at 80% 30%, rgba(116, 202, 255, 0.12), transparent 60%);
+  pointer-events: none;
+  z-index: -1;
+}
+
 .app-layout {
   flex: 1;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2.5rem;
-  padding: 1rem 1.5rem 2rem;
-}
-
-.card-panel {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.control-panel {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.25rem;
-  max-width: 28rem;
-  width: 100%;
   padding: 1.5rem;
-  background: var(--color-surface);
-  border-radius: 1.5rem;
-  box-shadow: var(--card-shadow);
-  border: 1px solid rgba(185, 144, 255, 0.2);
-  backdrop-filter: blur(12px);
+  width: min(720px, 100%);
+  margin: 0 auto;
 }
 
-.status {
-  margin: 0;
-  text-align: center;
-  line-height: 1.5;
-}
-
-.status--highlight {
-  color: var(--color-warning);
-}
-
-.status--muted {
-  color: var(--color-text-muted);
-  font-size: 0.95rem;
-}
-
-.button {
-  appearance: none;
-  border: none;
-  padding: 0.85rem 1.4rem;
-  border-radius: 999px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-  width: 100%;
-  max-width: 16rem;
-}
-
-.button--primary {
-  background: linear-gradient(135deg, #9354ff, #c88bff);
-  color: #18082b;
-  box-shadow: 0 12px 30px rgba(147, 84, 255, 0.4);
-}
-
-.button--ghost {
-  background: transparent;
-  color: var(--color-accent-strong);
-  border: 1px solid rgba(185, 144, 255, 0.5);
-  box-shadow: 0 12px 30px rgba(45, 22, 75, 0.3);
-}
-
-.button:hover,
-.button:focus-visible {
-  transform: translateY(-2px);
-}
-
-.button:active {
-  transform: translateY(0);
-}
-
-.reset-dialog {
-  position: fixed;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  z-index: 99;
-}
-
-.reset-dialog__backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(12, 3, 33, 0.68);
-  backdrop-filter: blur(6px);
-}
-
-.reset-dialog__content {
-  position: relative;
-  width: min(90vw, 22rem);
-  background: rgba(30, 20, 48, 0.95);
-  border-radius: 1.4rem;
-  padding: 1.8rem;
-  border: 1px solid rgba(185, 144, 255, 0.35);
-  box-shadow: 0 20px 60px rgba(12, 3, 33, 0.45);
+.card-stage {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  align-items: center;
+  gap: 2rem;
+  width: min(420px, 90vw);
+}
+
+.card-stage__hint {
+  margin: 0;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  color: rgba(232, 210, 255, 0.68);
   text-align: center;
-}
-
-.reset-dialog__title {
-  margin: 0;
-  font-size: 1.2rem;
-}
-
-.reset-dialog__message {
-  margin: 0;
-  color: var(--color-text-muted);
-}
-
-.reset-dialog__actions {
-  display: flex;
-  gap: 0.75rem;
-  justify-content: center;
-}
-
-.reset-dialog[hidden] {
-  display: none;
 }
 
 .app-footer {
